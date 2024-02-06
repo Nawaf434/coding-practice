@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Code Practice</title>
+    <style>
+        #output {
+            margin-top: 20px;
+            border: 1px solid black;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Code Practice</h1>
+    <select id="question">
+        <option value="1">Program 1</option>
+        <option value="2">Program 2</option>
+        <option value="3">Program 3</option>
+        <option value="4">Program 4</option>
+        <option value="5">Program 5</option>
+        <option value="6">Program 6</option>
+        <option value="7">Program 7</option>
+    </select>
+    <textarea id="code" rows="10" cols="50"></textarea><br>
+    <button onclick="runCode()">Run Code</button>
+    <div id="output"></div>
+
+    <script>
+        const questions = {
+            1: 'Write a program to print the numbers from 1 to 20 using a for loop.',
+            2: 'Write a program to print the numbers from 2 to 16 using a for loop.',
+            3: 'Write a program to print the numbers from 50 to 10 using a for loop.',
+            4: 'Write a program to find the vowels in an input word.',
+            5: 'Write a program to find the odd and even numbers inside a given list using a while loop.',
+            6: 'Write a program to create a function that calculates the area of a rectangle.',
+            7: 'Write a program to create a function that calculates the area of a circle.',
+        };
+
+        function runCode() {
+            let question = document.getElementById('question').value;
+            let code = document.getElementById('code').value;
+            let output = document.getElementById('output');
+            try {
+                let result = eval(code);
+                output.textContent = 'Result: ' + result;
+            } catch (error) {
+                output.textContent = 'Error: ' + error;
+            }
+        }
+
+        document.getElementById('question').addEventListener('change', function() {
+            document.getElementById('code').placeholder = questions[this.value];
+        });
+    </script>
+</body>
+</html>
